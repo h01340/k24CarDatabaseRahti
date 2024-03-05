@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+  <head>
+    <title>Main Page week 6</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+
+  <body>
+  
+    <p>Tervetuloa <b sec:authentication="name"></b>, 
+        rooli = <b sec:authentication="principal.authorities"></b>, syksyn 2023 autosovellukseen!</p>
+   
+    <p><a href="/carlist">Autolistaus</a></p>
+    <a href="/owner/ownerlist">Omistajalistaus</a><br><br><br>
+  	<a href="/logout"><i>Kirjaudu ulos</i></a>
+  </body>
+
+</html>

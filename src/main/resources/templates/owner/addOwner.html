@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <title>new owner</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	
+		<p align="right">Sovelluksen käyttäjä: <b sec:authentication="name"></b>, 
+        rooli = <b sec:authentication="principal.authorities"></b></p>
+	<div>
+	<h1>New owner information</h1>
+	<form action="#" th:object="${uusiOmistaja}" th:action="@{saveOwner}" method="post">
+		<table>
+			<tr>
+				<td>First name: <input type="text" th:field="*{firstName}" /></td>
+				<td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Error</td>				
+			</tr>
+			<tr>
+				<td>Last name: <input type="text" th:field="*{lastName}" /></td>
+			</tr>
+			<tr>
+				<td>City: <input type="text" th:field="*{city}" /></td>
+			</tr>
+			<tr>
+				<td>Social security number: <input type="text" th:field="*{ssn}" /></td>
+			</tr>			  	
+	  		<tr>
+				<td>Year of birth: <input type="number" id="yob" th:field="*{yob}" /></td>
+				<td th:if="${#fields.hasErrors('yob')}" th:errors="*{yob}">Error in yob</td>
+			</tr>	
+		</table>
+		  	<!-- 
+		  	<div>
+		  	<label>First name</label>
+			<input type="text" th:field="*{firstName}" />
+			</div>
+			<div>
+		  	<label>Last name</label>
+		  	<input type="text" th:field="*{lastName}" />
+			</div>
+			<div>
+		  	<label>City</label>
+			<input type="text" th:field="*{city}" />
+			</div>
+			<div>
+		  	<label>Social security number</label>
+			<input type="text" th:field="*{ssn}" />
+			</div>
+			<div>		
+		  	<label>Year Of birth</label>
+			<input type="number" min="1800" th:field="*{yob}" /> 
+			<input type="number" th:field="*{yob}" />
+			<div th:if="${#fields.hasErrors('yob')}" th:errors="*{yob}">Error</div>			
+			</div>-->
+			<input type="submit" value="Save"></input>
+		</form>
+	
+	</div>
+
+ 	
+</body>
+</html>

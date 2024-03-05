@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <title>Edit</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Edit car</h1>
+	<div>
+	<form th:object="${editCar}" th:action="@{/saveCar}" action="#" method="post">
+		  	<input type="hidden" id="id" th:field="*{id}" />
+		  	<div>
+		  	<label>Brand</label>
+			<input type="text" th:field="*{brand}" />
+			</div>
+			<div>
+		  	<label>Model</label>
+		  	<input type="text" th:field="*{model}" />
+			</div>
+			<div>
+		  	<label>Color</label>
+			<input type="text" th:field="*{color}" />
+			</div>
+			<div>
+		  	<label>Register number</label>
+			<input type="text" th:field="*{registerNumber}" />
+			</div>
+			<div>		
+		  	<label>Year Of Construction</label>
+			<input type="number" th:field="*{year}" />
+			</div>
+			<div>			
+		  	<label>Price</label>
+			<input type="number" th:field="*{price}" />			
+			</div>
+			<br>
+		  	<label>Owner</label>
+			 <select id="owners" th:field="*{owner}">
+       			<option th:each="owner: ${omistajat}" th:value="${owner.id}" th:text="${owner.lastName} + ' ' + ${owner.firstName}"></option>
+    		</select>			
+			<input type="submit" value="Save"></input>
+		</form>
+	
+	</div>
+ 
+ 	
+</body>
+</html>

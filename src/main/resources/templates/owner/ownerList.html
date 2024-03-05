@@ -1,0 +1,35 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <title>owners</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+		<p align="right">Sovelluksen käyttäjä: <b sec:authentication="name"></b>, 
+        rooli = <b sec:authentication="principal.authorities"></b></p>
+	<h1>Owners</h1>
+    <table>
+		<tr>
+		    <th>First name</th>
+		    <th>Last name</th>
+		    <th>Social Security Number</th>
+		    <th>Year Of Birth</th>
+		</tr>  
+    	<tr th:each = "owner : ${owners}">
+    		<td th:text="${owner.firstName}"></td>
+    		<td th:text="${owner.lastName}"></td>
+    		<td th:text="${owner.ssn}"></td>
+    		<td th:text="${owner.yob}"></td>
+    		<td><a th:href="@{/owner/deleteOwner/{id}(id=${owner.id})}">Poista</a></td>
+    	</tr>
+     </table>
+     <a href="/owner/addOwner">Add new owner</a>
+     <br>
+     <a href="/index">Palaa pääsivulle</a>
+     <br><br>
+     <a href="/logout"><i>Kirjaudu ulos</i></a>
+     
+</body>
+</html>

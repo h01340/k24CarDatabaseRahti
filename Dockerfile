@@ -5,7 +5,7 @@
 ## Based on https://community.render.com/t/3232
 
 # Build stage
-FROM eclipse-temurin-17-focal AS builder
+FROM adoptopenjdk:17-jre-hotspot-focal AS builder
 WORKDIR /opt/app
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./

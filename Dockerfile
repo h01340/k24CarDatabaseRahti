@@ -5,7 +5,7 @@
 ## Based on https://community.render.com/t/3232
 
 # Build stage
-FROM adoptopenjdk:17-jre-hotspot-focal AS builder
+FROM eclipse-temurin:17-jre-alpine AS builder
 WORKDIR /opt/app
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
@@ -15,7 +15,7 @@ COPY ./src ./src
 RUN ./mvnw clean install -DskipTests 
 RUN find ./target -type f -name '*.jar' -exec cp {} /opt/app/app.jar \; -quit
 
-FROM adoptopenjdk:17-jre-hotspot-focal
+FROM eclipse-temurin:17-jre-alpine
 COPY --from=builder /opt/app/*.jar /opt/app/
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/opt/app/app.jar" ]
